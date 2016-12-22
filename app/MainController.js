@@ -1,13 +1,13 @@
 let $http;
 let angular = require('angular');
 
-function prepareSearch(searchText) {
+function prepareSearch(searchText, searchFuziness) {
     return "{\n" +
         "\"query\": {\n" +
         "    \"multi_match\" : {\n" +
         "        \"query\" : \"" + searchText + "\",\n" +
         "            \"fields\" : \"card_name\",\n" +
-        "            \"fuzziness\" : \"0\"\n" +
+        "            \"fuzziness\" : \"" + searchFuziness + "\"\n" +
         "    }\n" +
         "}\n" +
     "}\n";
@@ -25,6 +25,7 @@ export default class MainController {
     constructor(_$http) {
         $http = _$http;
         this.searchText = "";
+        this.searchFuzziness = "0";
     }
 
     search() {
@@ -34,7 +35,7 @@ export default class MainController {
             headers: {
                 'Content-Type': 'application/json'
             },
-            data: prepareSearch(this.searchText)
+            data: prepareSearch(this.searchText, this.searchFuzziness)
         };
 
         $http(req).then((response) => {
