@@ -28,7 +28,6 @@ export default class MainController {
     }
 
     search() {
-        console.log(this.searchText);
         var req = {
             method: 'POST',
             url: 'http://localhost:9200/cards-against-humanity-cards/_search',
