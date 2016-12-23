@@ -5,6 +5,7 @@ import jsonFormatter from 'jsonformatter';
 import jsonCss from 'jsonformatter/dist/json-formatter.min.css';
 import MainController from './MainController';
 import SearchTextbox from './SearchTextboxDirective';
+require('bootstrap/dist/css/bootstrap.min.css');
 require('./styles/styles.scss');
 
 angular.module('cah-web-portal', ['jsonFormatter'])

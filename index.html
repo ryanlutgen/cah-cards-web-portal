@@ -6,13 +6,23 @@
     <script src="dist/app.js"></script>
 </head>
 <body ng-controller="MainCtrl as mc">
-    <div style="padding-bottom: 45px">
-        <label for="clusterUrl">Cluster URL:</label><input type="text" id="clusterUrl" class="input-medium" ng-model="mc.clusterUrl"/>
-        <label for="username">Username:</label><input type="text" id="username" ng-model="mc.clusterUser"/>
-        <label for="password">Password:</label><input type="password" id="password" ng-model="mc.clusterPassword"/>
+    <div class="container">
+        <div class="padding-bottom-medium">
+            <label for="clusterUrl">Cluster URL:</label><input type="text" id="clusterUrl" class="input-medium" ng-model="mc.clusterUrl"/>
+            <label for="username">Username:</label><input type="text" id="username" ng-model="mc.clusterUser"/>
+            <label for="password">Password:</label><input type="password" id="password" ng-model="mc.clusterPassword"/>
+        </div>
     </div>
-    <div>
-        <search-cards-textbox></search-cards-textbox>
+    <div class="container padding-bottom-medium">
+        <div><label>Search Text: </label><input ng-model='mc.searchText' ng-enter='mc.search()' /> <button ng-click='mc.search()'>Search</button></div>
+        <div><label>Search Fuzziness: </label><select ng-model='mc.searchFuzziness'><option value='0'>0</option><option value='1'>1</option><option value='2'>2</option><option value='3'>3</option><option value='4'>4</option></select></div>
+    </div>
+    <div class="container">
+        <div class="row" ng-repeat="card in mc.searchResults">
+            <div class="col-xs-1">{{card.card_type}}</div>
+            <div class="col-lg-7">{{card.card_name}}</div>
+            <div class="col-xs-6 col-sm-4">{{card.card_set}}</div>
+        </div>
     </div>
 </body>
 </html>
