@@ -28,13 +28,15 @@ export default class MainController {
         this.searchFuzziness = "0";
         this.clusterUser = "";
         this.clusterPassword = "";
+        this.clusterUrl = "";
     }
 
     search() {
+        let clusterUrl = this.clusterUrl;
         let auth = window.btoa(this.clusterUser + ":" + this.clusterPassword);
         var req = {
             method: 'POST',
-            url: 'https://cah-4786656500.us-west-2.bonsaisearch.net/cards-against-humanity-cards/_search',
+            url: 'https://' + clusterUrl + '/cards-against-humanity-cards/_search',
             headers: {
                 'Content-Type': 'application/json',
                 "Authorization": "Basic " + auth
