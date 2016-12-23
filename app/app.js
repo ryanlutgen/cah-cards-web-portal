@@ -5,8 +5,8 @@ import jsonFormatter from 'jsonformatter';
 import jsonCss from 'jsonformatter/dist/json-formatter.min.css';
 import MainController from './MainController';
 import SearchTextbox from './SearchTextboxDirective';
+require('./styles/styles.scss');
 
-console.log("hi");
 angular.module('cah-web-portal', ['jsonFormatter'])
     .controller('MainCtrl', ['$http', MainController])
     .directive('ngEnter', function() {

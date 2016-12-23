@@ -59,11 +59,11 @@ module.exports = {
             //     exclude: /node_modules/,
             //     loader: 'raw-loader'
             // },
-            // {
-            //     test: /\.scss$/,
-            //     exclude: /(node_modules)/,
-            //     loader: "style-loader!css-loader!sass-loader"
-            // },
+             {
+                 test: /\.scss$/,
+                 exclude: /(node_modules)/,
+                 loader: "style-loader!css-loader!sass-loader"
+             },
             {
                 test: /\.css$/,
                 loader: "style-loader!css-loader"

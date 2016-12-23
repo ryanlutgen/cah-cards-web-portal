@@ -26,14 +26,18 @@ export default class MainController {
         $http = _$http;
         this.searchText = "";
         this.searchFuzziness = "0";
+        this.clusterUser = "";
+        this.clusterPassword = "";
     }
 
     search() {
+        let auth = window.btoa(this.clusterUser + ":" + this.clusterPassword);
         var req = {
             method: 'POST',
-            url: 'http://localhost:9200/cards-against-humanity-cards/_search',
+            url: 'https://cah-4786656500.us-west-2.bonsaisearch.net/cards-against-humanity-cards/_search',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                "Authorization": "Basic " + auth
             },
             data: prepareSearch(this.searchText, this.searchFuzziness)
         };
